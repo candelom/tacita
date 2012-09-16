@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tacita Home</title>
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- <link rel="stylesheet" href="css/main.css" type="text/css"> -->
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>	
+    <script type="text/javascript">
+    
+        $(function() {
+ 	
+            console.log("WEATHER");
+//			if("preference" in localStorage) {
+//				$("#location").val(localStorage['preference']);
+//			}	
+		
+		
+			var saveLocation = function() {
+				var location = $("#location").val();
+                console.log("/*** SAVING LOCATION "+location+" ****/");
+                localStorage["preference"] = location;
+				//update db
+				updateEntry("weather", [location]);
+			}
+                 
+			
+			$("#saveLocation").click(function() {
+				saveLocation();
+			});
+			
+        })
+
+    
+    </script>
+    
+    <script type="text/javascript" charset="utf-8">
+			  function updateEntry(appName, prefValue) {
+					JSInterface.updatePreferenceEntry(appName, prefValue);
+			  }
+    </script>
+    
+    <style>
+        
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+	body {
+		
+		background: rgb(293,293,293);
+		
+	}
+
+
+
+
+/*** POPUP ***/
+
+ .modalOverlay
+        {
+            width:100%;
+            height:100%;
+            position:absolute;
+	        top:0;	       
+	        left:0;
+            margin:0;
+	        padding:0;
+	        background:#000;
+            opacity:0;
+            -webkit-transition: opacity 0.3s ease-in;
+            z-index:101;
+        }
+		
+		
+    .modalWindow
+    {
+        position:fixed;
+        top:150px;	        
+        margin:0;	        	       
+        border:2px solid #fff;	        	        
+        width:180px;
+        height:100px;	        
+        line-height:20px;
+        font-weight:bold;
+        font-size:18px;
+        color:#fff;
+        padding:10px;
+        opacity:0;                        
+        z-index:102;
+        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7c9bc0), color-stop(2%, #416086), color-stop(100%, #293e56));    
+        -webkit-border-radius:8px;              
+        -webkit-box-shadow:-1px 2px 12px rgba(0, 0, 0, 0.91);
+        -webkit-transition: opacity 0.3s ease-in;                          
+    }
+		
+
+    
+    		  #title {
+					height: 30px;
+					border-bottom: 1px solid #A2A2A2;
+				}
+				
+				
+				#title span {
+					color: #AAAAAA;
+				    font-size: 15px;
+				    font-weight: bold;
+				    letter-spacing: 1px;
+				    line-height: 1;
+				    margin: 0;
+				    padding: 0 10px;
+				    text-transform: uppercase;
+				}
+				
+				#content {
+					
+					margin-top: 30px;
+				}
+					
+					
+/*
+			input[type="text"]{
+					-moz-border-bottom-colors: none;
+				    -moz-border-image: none;
+				    -moz-border-left-colors: none;
+				    -moz-border-right-colors: none;
+				    -moz-border-top-colors: none;
+				    background-color: transparent;
+				    border-color: transparent transparent #0099CC;
+				    border-radius: 7px 7px 7px 7px;
+				    border-style: solid;
+				    border-width: 2px;
+				    font-family: inherit;
+				    font-size: 16px;
+				    padding: 5px 15px;
+				    width: 90%;
+			}
+*/
+    		input[type="search"] {
+    			
+			    background: url("../images/search-icon.png") no-repeat scroll 9px center #EDEDED;
+			    border: 1px solid #CCCCCC;
+			    border-radius: 10em 10em 10em 10em;
+			    padding: 9px 10px 9px 32px;
+			    width: 130px;
+    		}
+			
+			
+			
+			#locations {
+				margin-top: 60px;
+			}
+			
+			.saved_location {
+				
+				height: 70px;
+				
+			}
+			
+			
+			.saved_location_name {
+				
+				float: left;
+				width: 60%;
+				padding: 10px;
+				height: 50px;
+			}	
+			
+			
+			.saved_location_rmv {
+				
+				float: left;
+				width: 30%;
+				height: 60px;
+				margin-top: 10px;
+			}
+			
+			#location_title {
+				margin-left: 20px;
+			}
+			
+			
+			#saved_locations {
+				
+				margin-left: 20px;
+			}
+			
+    </style>
+</head>
+<body>	
+	<div id="title"><span>Locations</span></div>
+
+	<div id="content">
+		<div id="location_input">
+			<input type="search" placeholder="City, Nation" id="location"/>
+		</div>
+		<div id="locations">
+			<div id="title"><span>Saved Locations</span></div>
+			<div id="saved_locations">
+				<div class="saved_location">
+					<div class="saved_location_name">
+						<span>Lugano</span>
+					</div>
+					<div class="saved_location_rmv">
+						<img src="../images/cancel.png">
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+		
+</body>

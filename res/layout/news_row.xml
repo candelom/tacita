@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent"
+      android:layout_height="100dip"
+      android:orientation="vertical"
+      android:id="@+id/news_item" >
+     
+     <TextView
+         android:id="@+id/itemTitle"
+         android:layout_width="300dip"
+         android:layout_height="100dip"
+         android:layout_alignParentLeft="true"
+         android:layout_centerVertical="true"
+         android:layout_marginLeft="10dip"
+         android:gravity="center"
+         android:text="Pistorius reprieved in 4x400m relay"
+         android:textSize="18dip" />
+     
+      <TextView
+          android:id="@+id/itemTime"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="20dip"
+          android:text="Thu, 09 Aug 2012 10:25:21 EDT"
+          android:textSize="12dip" />
+      
+ </RelativeLayout>

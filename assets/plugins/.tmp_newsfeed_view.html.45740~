@@ -1,0 +1,75 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+		    <title>Newsfeed</title>
+    		<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>	
+			<script type="text/javascript" charset="utf-8">
+			    function updateEntry(appName, prefValue) {
+					JSInterface.updatePreferenceNewsEntry(appName, prefValue);
+				}
+			</script>
+            
+            <script type="text/javascript">
+            
+                $(function() {
+		            
+							        
+		        });
+            
+            </script>
+            <style>
+            	
+				.topic_name {
+					float: left;
+					width: 60%;
+				}
+				
+				
+				.topic_cb {
+					float: right;
+					width: 30%;					
+				}
+				
+				
+				.topic_row {
+					height: 70px;
+				}
+				
+            </style>
+        <body>
+			<div id="content">
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Hot</span>
+					</div>
+					<div class="topic_cb">
+						<input type="checkbox"/>
+					</div>
+				</div>
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Tech</span>
+					</div>
+					<div class="topic_cb">
+						<input type="checkbox"/>
+					</div>
+				</div>
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Sport</span>
+					</div>
+					<div class="topic_cb">
+						<input type="checkbox"/>
+					</div>
+				</div>
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Culture</span>
+					</div>
+					<div class="topic_cb">
+						<input type="checkbox"/>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>

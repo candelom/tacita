@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tacita Home</title>
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link href="../css/jquery-ui.css" type="text/css" rel="Stylesheet" />
+	<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+ 	<script src="../js/jquery-ui.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    	
+		  function updateEntry(appName, prefValue) {
+				JSInterface.updatePreferenceWeatherEntry(appName, prefValue);
+		  }
+		  
+		  
+		  function getSavedLocations() {
+		  		return JSInterface.getSavedLocations();
+		  }
+    </script>
+     <script type="text/javascript">
+    
+        $(function() {
+ 	
+			console.log(localStorage["locations"]);
+			if(!("locations" in localStorage)) {
+	            console.log("here");
+				localStorage["locations"] = JSON.stringify([]);
+				$("#saved_location").append("<span>No locations are saved.</span>");
+			}	
+				
+			var saved_value = getSavedLocations();
+			console.log("LOCATIONS ARE ALREADY SAVED "+saved_locations);
+			
+			console.log(saved_value.split("::"));
+			var saved_locations = saved_value.split("::");
+			
+			console.log("saved_locations => " + (saved_locations == ""));
+			if(saved_locations != "") {
+				for(var j = 0; j < saved_locations.length; j++) {
+					console.log(saved_locations[j]);
+					addLocation(saved_locations[j]);
+				}
+			}
+			setCityValidation();
+        })
+    
+    </script>
+
+    
+    <style>
+        
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+	body {
+		background: rgb(293,293,293);
+	}
+	
+
+	/*** POPUP ***/
+
+ 	.modalOverlay
+        {
+            width:100%;
+            height:100%;
+            position:absolute;
+	        top:0;	       
+	        left:0;
+            margin:0;
+	        padding:0;
+	        background:#000;
+            opacity:0;
+            -webkit-transition: opacity 0.3s ease-in;
+            z-index:101;
+        }
+		
+		
+    .modalWindow
+    {
+        position:fixed;
+        top:150px;	        
+        margin:0;	        	       
+        border:2px solid #fff;	        	        
+        width:180px;
+        height:100px;	        
+        line-height:20px;
+        font-weight:bold;
+        font-size:18px;
+        color:#fff;
+        padding:10px;
+        opacity:0;                        
+        z-index:102;
+        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7c9bc0), color-stop(2%, #416086), color-stop(100%, #293e56));    
+        -webkit-border-radius:8px;              
+        -webkit-box-shadow:-1px 2px 12px rgba(0, 0, 0, 0.91);
+        -webkit-transition: opacity 0.3s ease-in;                          
+    }
+		
+
+    		  #title {
+					height: 30px;
+					border-bottom: 1px solid #0099CC;
+				}
+				
+				
+				#title span {
+					color: #0099CC;
+				    font-size: 15px;
+				    font-weight: bold;
+				    letter-spacing: 1px;
+				    line-height: 2;
+				    margin: 0;
+				    padding: 0 10px;
+				    text-transform: uppercase;
+				}
+				
+				#content {
+					
+					margin-top: 30px;
+				}
+					
+					
+/*
+			input[type="text"]{
+					-moz-border-bottom-colors: none;
+				    -moz-border-image: none;
+				    -moz-border-left-colors: none;
+				    -moz-border-right-colors: none;
+				    -moz-border-top-colors: none;
+				    background-color: transparent;
+				    border-color: transparent transparent #0099CC;
+				    border-radius: 7px 7px 7px 7px;
+				    border-style: solid;
+				    border-width: 2px;
+				    font-family: inherit;
+				    font-size: 16px;
+				    padding: 5px 15px;
+				    width: 90%;
+			}
+*/
+    		input[type="search"] {
+    			
+			    background: url("../images/search-icon.png") no-repeat scroll 220px center #EDEDED;
+			    border: 1px solid #CCCCCC;
+			    border-radius: 10em 10em 10em 10em;
+			    padding: 9px 10px 9px 32px;
+			    width: 250px;
+    		}
+			
+			
+			
+			#locations {
+				margin-top: 60px;
+			}
+			
+			.saved_location {
+				
+				height: 70px;
+				border-bottom: 1px solid #AAAAAA;
+				background: rgb(246, 246, 246);
+			}
+			
+			
+			.saved_location_name {
+				
+				float: left;
+				width: 60%;
+				padding: 10px;
+				height: 50px;
+			}	
+			
+			
+			.saved_location_rmv {
+				
+				float: left;
+				width: 30%;
+				height: 60px;
+				margin-top: 10px;
+			}
+			
+			#location_title {
+				margin-left: 20px;
+			}
+			
+			
+			/*
+#saved_locations {
+				
+				margin-left: 20px;
+			}
+*/
+			
+    </style>
+</head>
+<script>
+	
+	var cities = ["Lugano", "Locarno", "Lugaggia"];
+	
+	       
+	function setCityValidation() {
+		console.log("SET CITY VALIDATION");
+		$("#location").autocomplete({
+			source: function(request, response) {
+                console.log(request);
+                $.ajax({
+                    type: "GET",
+                    url: "http://10.62.96.140:8888/search.php",
+                    data: "location="+request.term,
+                    success: function(data) {
+                        var json_data = JSON.parse(data);
+                        response(json_data);
+                    }
+                })
+                
+            
+            },
+			select: function(event, ui) {
+				addLocation(ui.item.value);	
+				$("#location").val("");
+			}
+		});
+		
+	}
+
+
+
+
+
+	function addLocation(city) {
+			console.log("/**** ADD LOCATION ****/");
+			console.log($("#locations").length);
+			
+			
+			
+			var already = isAlreadySaved(city);
+			console.log("already => "+already);
+			if(!already) {
+				console.log("here");
+				$("#saved_locations").append("<div class='saved_location' id='"+city+"'>"+
+												"<div class='saved_location_name'>"+
+													"<span>"+city+"</span>"+
+												"</div>"+
+												"<div class='saved_location_rmv'>"+
+													"<img src='../images/cancel.png' onclick='removeCity(\""+city+"\")'></div></div>"
+											);
+											
+											
+				console.log("ADDED "+city);
+											
+				var saved_locations = JSON.parse(localStorage["locations"]);
+				saved_locations.push(city);
+				localStorage["locations"] = JSON.stringify(saved_locations);
+                updateEntry("weather", JSON.parse(localStorage["locations"]));    
+                                    
+			}
+		}
+		
+		
+		
+		function isAlreadySaved(city) {
+			
+			var elems = $(".saved_location_name");
+			
+			
+			for(var j = 0; j < elems.length; j++) {
+					
+					var cur_city = $(elems[j]).find("span").text();
+					console.log("cur_city => " + cur_city);
+					console.log("city => " + city);
+
+					if(cur_city == city) {
+						console.log("returning true");
+						return true;
+					}
+			}
+			
+			return false;			
+		}    
+		
+		
+		
+		function removeCity(city) {
+			console.log("REMOVE CITY");
+			$(".saved_location").each(function(index) {
+				
+				var cur_city = $(this).find(".saved_location_name span").text();
+                console.log(cur_city);
+				if(cur_city == city) {
+				
+					$(this).remove();	
+					var saved_locations = JSON.parse(localStorage["locations"]);
+					var new_saved_locations = removeFromArray(city, saved_locations);
+					localStorage["locations"] = JSON.stringify(new_saved_locations);
+					updateEntry("weather", JSON.parse(localStorage["locations"]));
+					
+					
+					console.log($(".saved_location").length)
+					if($(".saved_location").length == 0) {
+						
+						$("#saved_location").append("<span>No locations are saved.</span>");
+					}
+				}
+			});
+			
+		}
+		
+		
+		function removeFromArray(elem, array) {
+			
+			var new_array = [];
+			for(var j =0; j < array.length; j++) {
+				var cur_city = array[j];
+				if(cur_city != elem) {
+					new_array.push(cur_city);
+				}
+			}
+		}
+		
+		
+	
+</script>
+<body>	
+	<div id="content">
+		<div class="ui-widget" id="location_input">
+			<input type="search" placeholder="City, Nation" id="location"/>
+		</div>
+		<div id='locations'>
+			<div id='title'><span>Saved Locations</span></div>
+			<div id='saved_locations'>
+				<!-- <div class='saved_location' id='city'>
+					<div class='saved_location_name'>
+						<span>Locarno, Suisse</span>
+					</div>
+					<div class='saved_location_rmv'>
+						<img src='../images/cancel.png'/>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</body>

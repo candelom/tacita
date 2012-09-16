@@ -1,0 +1,106 @@
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+ 
+	  <RelativeLayout  android:orientation="horizontal"
+  				   android:layout_width="fill_parent"
+  				   android:layout_height="70dip"
+  				   android:padding="10dip"
+  				   android:background="@color/bluish"
+  				   >
+      
+     <ImageView
+        android:id="@+id/appViewIcon"
+        android:layout_width="30dip"
+        android:layout_height="39dip"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+     />
+   
+  
+   <TextView
+       android:id="@+id/appTitle"
+       android:layout_width="wrap_content"
+       android:layout_height="39dip"
+       android:textSize="20dip"
+       android:layout_centerVertical="true"         
+       android:layout_marginLeft="60dip"
+       android:textColor="@color/white"
+       
+        />
+   
+    <Button
+       android:id="@+id/installButton"
+  	   android:layout_width="wrap_content"
+       android:layout_height="35dip"
+       android:layout_alignParentRight="true"
+       android:layout_centerVertical="true"
+       android:textColor="@color/white"
+     /> 
+      
+  </RelativeLayout>
+   
+     
+  <ScrollView  android:orientation="vertical"
+  			   android:layout_width="fill_parent"
+  			   android:layout_height="match_parent">
+   
+   <LinearLayout android:orientation="vertical"
+       			 android:layout_width="fill_parent"
+       			 android:layout_height="match_parent"
+       			 > 
+      
+      
+		<LinearLayout android:orientation="horizontal"
+	  				   android:layout_width="fill_parent"
+	  				   android:layout_height="180dip"
+	  				   android:padding="10dip"
+	  				   >
+		    
+		    <ImageView   android:id="@+id/appSmallImage"
+				        android:layout_width="100dip"
+				        android:layout_height="180dip"
+				        android:layout_centerVertical="true"/>
+		    
+		    <ImageView   android:id="@+id/appBigImage"
+				        android:layout_width="220dip"
+				        android:layout_height="180dip"
+				        />
+		    
+		    
+		</LinearLayout>
+		
+	
+	<!-- 	 <RatingBar
+	        android:id="@+id/ratingBar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:numStars="4"
+	        android:stepSize="0.8"
+	        android:rating="3.0" /> -->
+		
+			<TextView android:text="Description"
+		       		 android:id="@+id/appDescTitle"
+		             android:textSize="20dip"
+		             android:layout_width="fill_parent"
+		             android:layout_height="wrap_content"
+		             android:layout_marginLeft="15dip"
+		             android:textStyle="bold"
+		             android:layout_marginTop="10dip"
+		    />	
+		
+		  
+		   <TextView android:text=""
+		       		 android:id="@+id/appDesc"
+		             android:padding="15dip"
+		             android:textSize="16dip"
+		             android:layout_width="fill_parent"
+		             android:layout_height="wrap_content"
+		    />
+   
+	   </LinearLayout>
+
+</ScrollView>
+</LinearLayout>

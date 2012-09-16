@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Usi-display</string>
+    <string name="maps_api_key">0-EKgHGCYkeTySPPLbAkH5oScXFiECsf2DjshQw</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">USI-Display</string>
+    <string name="title_activity_news">News Items</string>
+    <string name="title_activity_apps">Apps on Screen</string>
+    <color name="bluish">#47476B</color>
+    <color name="white">#FFFFFF</color>
+</resources>
+

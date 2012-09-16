@@ -1,0 +1,55 @@
+<root>
+  <display>
+    <id>36</id>
+    <layoutID>6</layoutID>
+    <name>USI</name>
+    <width>1600</width>
+    <height>900</height>
+    <latitude>46.011030</latitude>
+    <longitude>8.957926</longitude>
+    <apps>
+    	<app>
+    		<name>News Feeds</name>
+			<namespace>newsfeed</namespace>
+			<icon>images/feed_icon.png</icon>
+    	</app>
+    	<app>
+    		<name>Photostream</name>
+			<namespace>photostream</namespace>
+			<icon>images/photostream_icon.png</icon>
+    	</app>
+    	<app>
+    		<name>Weather</name>
+			<namespace>weather</namespace>
+			<icon>images/weather_icon.png</icon>
+    	</app>
+    </apps>
+  </display>
+  <display>
+    <id>38</id>
+    <layoutID>7</layoutID>
+    <name>usi</name>
+    <width>123</width>
+    <height>123</height>
+    <latitude>46.011108</latitude>
+    <longitude>8.957424</longitude>
+    <apps>
+   		<app>
+    		<name>News Feeds</name>
+    		<namespace>newsfeed</namespace>
+			<icon>images/feed_icon.png</icon>
+    	</app>
+    	<app>
+    		<name>Photostream</name>
+			<namespace>photostream</namespace>
+			<icon>images/photostream_icon.png</icon>
+    	</app>
+    	<app>
+    		<name>Weather</name>
+			<namespace>weather</namespace>
+			<icon>images/weather_icon.png</icon>
+    	</app>
+    </apps>
+
+  </display>
+</root>

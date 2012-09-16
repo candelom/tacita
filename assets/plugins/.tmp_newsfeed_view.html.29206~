@@ -1,0 +1,170 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+		    <title>Newsfeed</title>
+    		 <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+			<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script> -->
+			<script type="text/javascript" charset="utf-8">
+			    function updateEntry(appName, prefValue) {
+					JSInterface.updatePreferenceNewsEntry(appName, prefValue);
+				}
+			</script>
+            
+            <script type="text/javascript">
+            
+                $(function() {
+					
+					if(!("topics" in localStorage)) {
+						localStorage["topics"] = JSON.stringify({Hot: false, Tech: false, Sport: false, Culture: false});
+					}
+					setCheckBoxes();
+//					alert("newsfeed view");
+					createCheckboxes();   
+		        });
+				
+				
+				function createCheckboxes()
+				{
+				    $(".cb").click(function() {
+                    
+                        $(this).toggleClass("checked");
+                    
+                    })
+				}
+				
+				function setCheckBoxes() {
+					
+					$(".topic_cb input").each(function(index) {
+						$(this).click(function(index) {
+							if($(this).attr("checked")) {
+								var topic = $(this).parent().parent().find(".topic_name span").text();
+								console.log("/*** CLICKED => "+topic+" ****/");
+								console.log(localStorage["topics"]);
+	
+								var cur_obj = JSON.parse(localStorage["topics"]);
+								cur_obj[topic] = true;
+								console.log(JSON.stringify(cur_obj));
+								localStorage["topics"] = JSON.stringify(cur_obj);
+								console.log(localStorage["topics"]);
+								
+							} else {
+								
+								var topic = $(this).parent().parent().find(".topic_name span").text();
+								console.log("/*** CLICKED => "+topic+" ****/");
+								console.log(localStorage["topics"]);
+	
+								var cur_obj = JSON.parse(localStorage["topics"]);
+								cur_obj[topic] = false;
+								console.log(JSON.stringify(cur_obj));
+								localStorage["topics"] = JSON.stringify(cur_obj);
+								console.log(localStorage["topics"]);
+							}
+							updateEntry("newsfeed", localStorage["topics"]);													
+						});	
+					});
+				} 
+            
+            </script>
+          <style>
+				
+				body {
+					
+					background: rgb(239, 239, 239);	
+					font-family: Roboto Sans serif;
+				}
+				
+				#title {
+					height: 30px;
+					border-bottom: 1px solid #A2A2A2;
+				}
+				
+				
+				#title span {
+					color: #AAAAAA;
+				    font-size: 15px;
+				    font-weight: bold;
+				    letter-spacing: 1px;
+				    line-height: 1;
+				    margin: 0;
+				    padding: 0 10px;
+				    text-transform: uppercase;
+				}
+				
+				#content {
+					
+					margin-top: 30px;
+					
+				}
+				
+				.topic_name {
+					float: left;
+					width: 60%;
+					margin-left: 20px;
+					margin-top: 5px;
+				}
+				
+				
+				.topic_cb {
+					float: right;
+					width: 30%;					
+				}
+				
+				
+				.topic_row {
+					height: 70px;
+					padding 10px;
+					font-size: 14pt;
+				}
+				
+		[role=checkbox]{
+		    background-image: url(../images/unchecked.png);
+		    height: 33px;
+		    width: 33px;
+		    display: inline-block;
+		    margin: 0 5px 0 5px;
+		    cursor: pointer;
+		}
+		
+		.checked[role=checkbox]{
+		    background-image: url(../images/checked.png);
+		}
+					</style>
+		</head>
+        <body>
+        	<div id="title"><span>Topics</span></div>
+			<div id="content">
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Hot</span>
+					</div>
+					<div class="topic_cb">
+						<span role="checkbox" class="cb"/>
+					</div>
+				</div>
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Tech</span>
+					</div>
+					<div class="topic_cb">
+						<span role="checkbox" class="cb"/>
+					</div>
+				</div>
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Sport</span>
+					</div>
+					<div class="topic_cb">
+						<span role="checkbox" class="cb"/>
+					</div>
+				</div>
+				<div class="topic_row">
+					<div class="topic_name">
+						<span>Culture</span>
+					</div>
+					<div class="topic_cb">
+						<span role="checkbox" class="cb"/>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>

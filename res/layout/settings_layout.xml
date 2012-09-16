@@ -1,0 +1,155 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+   	android:orientation="vertical"
+    >
+		<!--  WIFI ITEM -->
+
+    	<LinearLayout
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="80dp"
+    	    android:orientation="vertical" >
+    	    
+			<RelativeLayout
+			    xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:layout_width="fill_parent"
+			    android:layout_height="98dp"
+			    android:orientation="horizontal" >
+			 
+			  <!-- Screen Design for Photos -->
+			
+			  <TextView
+			      android:layout_width="220dp"
+			      android:layout_height="wrap_content"
+			      android:padding="15dip"
+			      android:text="Wifi"
+			      android:textSize="18dip"
+			      android:layout_centerVertical="true"
+			      android:layout_alignParentLeft="true"
+			      
+			      />
+			
+			  <CheckBox
+			      android:id="@+id/checkboxWIFI"
+			      android:layout_width="30dp"
+			      android:layout_height="30dp"
+			      android:layout_centerVertical="true"
+				  android:layout_alignParentRight="true"
+				  android:layout_marginRight="30dip"
+			       />
+			</RelativeLayout>
+			<TextView android:layout_width="300dp"
+			      android:layout_height="wrap_content"
+			      android:padding="15dip"
+			      android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+			      				eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			      android:textSize="11dip"
+			      android:layout_centerVertical="true"
+			      android:layout_alignParentLeft="true"
+	     	    	
+	     	/>
+	</LinearLayout>
+	
+   	<!--  BT ITEM -->
+
+	<LinearLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="80dp"
+	    android:orientation="vertical" >
+	    
+	  
+		<RelativeLayout android:orientation="horizontal"
+		  android:layout_width="fill_parent"
+		  android:layout_height="80dp">
+		    
+		  <!-- Screen Design for Photos -->
+	
+			<TextView
+			    android:layout_width="217dp"
+			    android:layout_height="wrap_content"
+			    android:padding="15dip"
+			    android:text="Bluetooth"
+			    android:textSize="18dip"
+			    android:layout_centerVertical="true"
+			    android:layout_alignParentLeft="true"
+			    
+			     />
+	
+			<CheckBox
+			    android:id="@+id/checkboxBT"
+			    android:layout_width="30dip"
+			    android:layout_height="30dip"
+			   	android:layout_centerVertical="true"
+			    android:layout_alignParentRight="true"
+			    android:layout_marginRight="30dip"
+			    
+			     />
+	
+		 </RelativeLayout>
+		 
+		  <TextView android:layout_width="300dp"
+			      android:layout_height="wrap_content"
+			      android:padding="15dip"
+			      android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+			      				eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			      android:textSize="11dip"
+			      android:layout_centerVertical="true"
+			      android:layout_alignParentLeft="true"
+	     	    	
+	     	/>
+	    
+ 	</LinearLayout>
+	
+	 <!--  NFC ITEM -->
+	 <LinearLayout android:layout_width="match_parent"
+	     		   android:layout_height="80dp"
+	     		   android:orientation="vertical">
+	     
+	     	
+	     
+	     
+	     	 <RelativeLayout android:orientation="horizontal"
+	  			   android:layout_width="fill_parent"
+	  			   android:layout_height="80dp">
+	  
+			  <!-- Screen Design for Photos -->
+			
+			  <TextView
+			      android:layout_width="244dp"
+			      android:layout_height="wrap_content"
+			      android:padding="15dip"
+			      android:text="NFC"
+			      android:textSize="18dip"
+			      android:layout_centerVertical="true"
+			      android:layout_alignParentLeft="true"
+			      
+			       />
+			 	
+			  <CheckBox
+			      android:id="@+id/checkboxNFC"
+			      android:layout_width="30dip"
+			      android:layout_height="30dip"
+			      android:layout_centerVertical="true"
+			  	  android:layout_alignParentRight="true"
+			      android:layout_marginRight="30dip"
+			      
+			       />
+			 
+			</RelativeLayout>
+			
+	     	 <TextView android:layout_width="300dp"
+			      android:layout_height="wrap_content"
+			      android:padding="15dip"
+			      android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+			      				eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			      android:textSize="11dip"
+			      android:layout_centerVertical="true"
+			      android:layout_alignParentLeft="true"
+	     	    	
+	     	    />
+	     
+	 </LinearLayout>
+	
+
+</LinearLayout>

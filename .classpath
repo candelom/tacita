@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="/Users/mattia/Downloads/commons-io-2.4/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/mattia/Downloads/TooTallNate-Java-WebSocket-1553b14/dist/WebSocket.jar"/>
+	<classpathentry kind="lib" path="/Users/mattia/Downloads/android-support-v13-r7-googlemaps.jar"/>
+	<classpathentry kind="lib" path="/Users/mattia/android-sdks/extras/android/support/v4/android-support-v4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/mattia/Downloads/jackson-datatype-json-org-0.9.3-javadoc.jar"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
